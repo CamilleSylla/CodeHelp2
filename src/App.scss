@@ -3,6 +3,7 @@
   margin: 0 auto;
   padding: 0;
   overflow: hidden;
+  background-color: #161616;
 }
 .super_title{
   width: 100%;
@@ -10,13 +11,62 @@
   text-align: center;
   text-transform: uppercase;
   margin: 0;
+  color: #161616;
+  -webkit-text-stroke-width: 5px;
+  -webkit-text-stroke-color: red;
+  text-shadow: 0 0 20px red;
+  animation: clippingNeon linear infinite 5s;
 }
 .medium_bold_title{
   font-size: 3vw;
   text-transform: uppercase;
   margin: 0;
+  color: #193559;
 }
 .subtitle {
   font-size: 1.5vw;
+}
+
+@keyframes clippingNeon {
+  0%{
+    -webkit-text-stroke-color: transparent;
+    text-shadow: 0 0 20px transparent;
+  }
+  5%{
+    -webkit-text-stroke-color: #193559;
+    text-shadow: 0 0 20px #193559;
+  }
+  10%{
+    -webkit-text-stroke-color: transparent;
+    text-shadow: 0 0 20px transparent;
+  }
+  15%{
+    -webkit-text-stroke-color: #0A8CBF;
+    text-shadow: 0 0 20px #0A8CBF;
+  }
+  18%{
+    -webkit-text-stroke-color: transparent;
+    text-shadow: 0 0 20px transparent;
+  }
+  21%{
+    -webkit-text-stroke-color: #BF06A0;
+    text-shadow: 0 0 20px #BF06A0;
+  }
+  30%{
+    -webkit-text-stroke-color: transparent;
+    text-shadow: 0 0 20px transparent;
+  }
+  35%{
+    -webkit-text-stroke-color: #D914CC;
+    text-shadow: 0 0 20px #D914CC;
+  }
+  40%{
+    -webkit-text-stroke-color: transparent;
+    text-shadow: 0 0 20px transparent;
+  }
+  45%{
+    -webkit-text-stroke-color: #0A8CBF;
+    text-shadow: 0 0 20px #0A8CBF;
+  }
 }
 

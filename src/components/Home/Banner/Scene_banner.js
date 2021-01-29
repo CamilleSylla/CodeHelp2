@@ -17,6 +17,9 @@ export default function SceneBanner() {
     const renderer = new THREE.WebGLRenderer({alpha: true});
     renderer.setSize(el.clientWidth, el.clientHeight);
     renderer.setClearColor( 0x000000, 0 );
+    renderer.toneMapping = THREE.ReinhardToneMapping
+    renderer.toneMappingExposure = 2.3
+    renderer.shadowMap.enabled = true
     el.appendChild(renderer.domElement);
     //responsivness
     window.addEventListener("resize", function () {
@@ -27,32 +30,60 @@ export default function SceneBanner() {
       camera.updateProjectionMatrix();
     });
 
-    var Box = new THREE.BoxGeometry(1,1,1);
-    //create a matérial
-    var material = new THREE.MeshBasicMaterial({color: 0xFFFFFF, wireframe: true})
-    var cube = new THREE.Mesh(Box, material)
-    cube.position.z = -10
-    
-    scene.add(cube)
 
     //Load Models
-    const Man = new GLTFLoader();
-    Man.load("/public/Man/bureau.gltf", (gltf) => {
+    const Bureau = new GLTFLoader();
+    Bureau.load("/bureau.gltf", (gltf) => {
+        gltf.scene.scale.setScalar(1.0)
+        gltf.scene.position.x = 8
+        gltf.scene.position.y = -3
+        gltf.scene.position.z = 1
+        gltf.scene.traverse(n => {
+            if(n.isMesh){
+                n.castShadow = true
+                n.receiveShadow =true
+                if(n.material.map) n.material.map.anisotropy = 16 
+            }
+        })
+      scene.add(gltf.scene);
+    });
+    const Man  = new GLTFLoader();
+    Man.load('/man/scene.gltf', (gltf) => {
+        gltf.scene.scale.setScalar(4.5)
+        gltf.scene.position.x = 3
+        gltf.scene.position.y = -3
+        gltf.scene.position.z = -2
+        gltf.scene.rotation.y = -3
+        gltf.scene.traverse(n => {
+            if(n.isMesh){
+                n.castShadow = true
+                n.receiveShadow =true
+                if(n.material.map) n.material.map.anisotropy = 16 
+            }
+        })
+        console.log(gltf.scene);
       scene.add(gltf.scene);
     });
     //Lights
-    const ambientLight = new THREE.AmbientLight(0xffffff, 2);
-    scene.add(ambientLight);
- //Camera
- camera.position.z = 3
+    const spotLight = new THREE.SpotLight(0xffffff, 2);
+    spotLight.castShadow = true
+    spotLight.shadow.bias = -0.0001
+    spotLight.shadow.mapSize.width = 1024*4
+    spotLight.shadow.mapSize.height = 1024*4
+    scene.add(spotLight);
 
+    const hemiLight = new THREE.HemisphereLight(0xffeeb1, 0x080820)
+    scene.add(hemiLight)
+ //Camera
+ camera.position.set(0,1,3.5)
+scene.rotation.y = 0.5
+scene.position.x += 2
  function upDate(){
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.005;
  }
 
  function render () {
      renderer.render(scene, camera)
+     spotLight.position.set( camera.position.x + 10,camera.position.x + 10,camera.position.x + 10)
  }
 
  function Loop () {
