@@ -47,13 +47,16 @@ export default function SceneBanner() {
         })
       scene.add(gltf.scene);
     });
+
+    let LeMan;
     const Man  = new GLTFLoader();
     Man.load('/man/scene.gltf', (gltf) => {
         gltf.scene.scale.setScalar(4.5)
         gltf.scene.position.x = 3
         gltf.scene.position.y = -3
         gltf.scene.position.z = -2
-        gltf.scene.rotation.y = -3
+        gltf.scene.rotation.y = -1
+        LeMan = gltf.scene
         gltf.scene.traverse(n => {
             if(n.isMesh){
                 n.castShadow = true
@@ -64,12 +67,40 @@ export default function SceneBanner() {
         console.log(gltf.scene);
       scene.add(gltf.scene);
     });
+    const Floor  = new GLTFLoader();
+    Floor.load('/floor/scene.gltf', (gltf) => {
+        gltf.scene.scale.setScalar(100.0)
+        gltf.scene.position.x = 0
+        gltf.scene.position.y = -5
+        gltf.scene.position.z = 20
+        // gltf.scene.rotation.y = -3
+        gltf.scene.traverse(n => {
+            if(n.isMesh){
+                n.castShadow = false
+                n.receiveShadow =true
+                if(n.material.map) n.material.map.anisotropy = 16 
+            }
+        })
+        console.log(gltf.scene);
+      scene.add(gltf.scene);
+    });
+
+
+    //Mouse
+    const mouse = {x: 0.5, y: 0.5}
+    window.addEventListener('mousemove', (event) => {
+      mouse.x = event.clientX / window.innerWidth  / 4
+    })
+
     //Lights
-    const spotLight = new THREE.SpotLight(0xffffff, 2);
+    const spotLight = new THREE.SpotLight(0xffffff, 1);
     spotLight.castShadow = true
     spotLight.shadow.bias = -0.0001
     spotLight.shadow.mapSize.width = 1024*4
     spotLight.shadow.mapSize.height = 1024*4
+    spotLight.position.x = 50
+    spotLight.position.y = 50
+    spotLight.position.z = 50
     scene.add(spotLight);
 
     const hemiLight = new THREE.HemisphereLight(0xffeeb1, 0x080820)
@@ -79,15 +110,19 @@ export default function SceneBanner() {
 scene.rotation.y = 0.5
 scene.position.x += 2
  function upDate(){
+  camera.rotation.y = mouse.x
+  // hemiLight.position.set( mouse.x + 10,mouse.x + 10,mouse.x + 10)
  }
 
  function render () {
      renderer.render(scene, camera)
-     spotLight.position.set( camera.position.x + 10,camera.position.x + 10,camera.position.x + 10)
+     
  }
 
  function Loop () {
      //run all the stuf (update, render, repeat)
+     
+    //  camera.rotation.z = mouse.y
      requestAnimationFrame(Loop)
      upDate()
      render()

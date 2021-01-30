@@ -7,24 +7,25 @@
 }
 .super_title{
   width: 100%;
-  font-size: 15vw;
-  text-align: center;
+  font-size: 10vw;
   text-transform: uppercase;
   margin: 0;
+  line-height: 130px;
   color: #161616;
   -webkit-text-stroke-width: 5px;
-  -webkit-text-stroke-color: red;
-  text-shadow: 0 0 20px red;
-  animation: clippingNeon linear infinite 5s;
+  -webkit-text-stroke-color:white;
+  text-shadow: 0 0 12px white;
+  // animation: clippingNeon linear infinite 3s;
 }
 .medium_bold_title{
   font-size: 3vw;
   text-transform: uppercase;
   margin: 0;
-  color: #193559;
+  color: white;
 }
 .subtitle {
   font-size: 1.5vw;
+  color: white;
 }
 
 @keyframes clippingNeon {
@@ -33,40 +34,40 @@
     text-shadow: 0 0 20px transparent;
   }
   5%{
-    -webkit-text-stroke-color: #193559;
-    text-shadow: 0 0 20px #193559;
+    -webkit-text-stroke-color: white;
+    text-shadow: 0 0 20px white;
   }
   10%{
     -webkit-text-stroke-color: transparent;
     text-shadow: 0 0 20px transparent;
   }
   15%{
-    -webkit-text-stroke-color: #0A8CBF;
-    text-shadow: 0 0 20px #0A8CBF;
+    -webkit-text-stroke-color: rgba(255, 255, 255, 0.301);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.301);
   }
   18%{
     -webkit-text-stroke-color: transparent;
     text-shadow: 0 0 20px transparent;
   }
   21%{
-    -webkit-text-stroke-color: #BF06A0;
-    text-shadow: 0 0 20px #BF06A0;
+    -webkit-text-stroke-color: white;
+    text-shadow: 0 0 20px white;
   }
   30%{
     -webkit-text-stroke-color: transparent;
     text-shadow: 0 0 20px transparent;
   }
   35%{
-    -webkit-text-stroke-color: #D914CC;
-    text-shadow: 0 0 20px #D914CC;
+    -webkit-text-stroke-color: rgba(255, 255, 255, 0.349);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.349);
   }
   40%{
     -webkit-text-stroke-color: transparent;
     text-shadow: 0 0 20px transparent;
   }
   45%{
-    -webkit-text-stroke-color: #0A8CBF;
-    text-shadow: 0 0 20px #0A8CBF;
+    -webkit-text-stroke-color: white;
+    text-shadow: 0 0 20px white;
   }
 }
 
