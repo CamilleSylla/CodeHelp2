@@ -32,12 +32,15 @@ export default function SceneBanner() {
 
 
     //Load Models
-    const Bureau = new GLTFLoader();
-    Bureau.load("/bureau.gltf", (gltf) => {
-        gltf.scene.scale.setScalar(1.0)
-        gltf.scene.position.x = 8
-        gltf.scene.position.y = -3
-        gltf.scene.position.z = 1
+    const Robot = new GLTFLoader();
+    Robot.load("/littleRobot/scene.gltf", (gltf) => {
+        gltf.scene.scale.setScalar(0.01)
+        gltf.scene.position.x = -10
+        gltf.scene.position.y = 10
+        gltf.scene.position.z = -30
+        // gltf.scene.position.x = 8
+        // gltf.scene.position.y = -3
+        // gltf.scene.position.z = 1
         gltf.scene.traverse(n => {
             if(n.isMesh){
                 n.castShadow = true
@@ -64,7 +67,6 @@ export default function SceneBanner() {
                 if(n.material.map) n.material.map.anisotropy = 16 
             }
         })
-        console.log(gltf.scene);
       scene.add(gltf.scene);
     });
     const Floor  = new GLTFLoader();
@@ -81,7 +83,6 @@ export default function SceneBanner() {
                 if(n.material.map) n.material.map.anisotropy = 16 
             }
         })
-        console.log(gltf.scene);
       scene.add(gltf.scene);
     });
 

@@ -2,6 +2,8 @@ import React from "react";
 import "../../../Styles/Home/Banner/Banner.scss";
 import SceneBanner from "./Scene_banner";
 import SceneEarthBanner from "./SceneBackground";
+import Facebook from '../../../assets/icons/social/facebook.svg'
+import Insta from '../../../assets/icons/social/insta.svg'
 export default function Banner() {
   return (
     <header id="home_banner">
@@ -14,15 +16,17 @@ export default function Banner() {
               Marquez internet de votre empreinte!
             </h2>
             <p className="subtitle">
-              Parce-que vous ne voulez plus de site monotone...
+              Parce-que vous ne voulez plus de sites monotone...
             </p>
             </div>
           <div id="social_banner">
             <div id="social_pisitioning_banner">
-              <div>
+              <div className="social_banner_btn">
+                <img src={Insta} alt="Facebook"/>
                 <a href="#">@iconicdev.id</a>
               </div>
-              <div>
+              <div className="social_banner_btn">
+              <img src={Facebook} alt="Facebook"/>
                 <a href="#">@iconicdev</a>
               </div>
             </div>
