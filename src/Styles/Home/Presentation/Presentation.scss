@@ -1,0 +1,14 @@
+.presentation {
+    display: flex;
+    section{
+        height: 100%;
+        width: 50%;
+    }
+
+    #left_presentation{
+background-color: aqua;
+    }
+    #right_presentation{
+background-color: blue;
+    }
+}

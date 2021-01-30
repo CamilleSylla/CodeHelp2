@@ -107,7 +107,7 @@ export default function SceneBanner() {
     const hemiLight = new THREE.HemisphereLight(0xffeeb1, 0x080820)
     scene.add(hemiLight)
  //Camera
- camera.position.set(0,1,3.5)
+ camera.position.set(0,1,5)
 scene.rotation.y = 0.5
 scene.position.x += 2
  function upDate(){

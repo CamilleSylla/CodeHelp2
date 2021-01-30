@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import * as THREE from "three";
-// import *  as Bureau from '../../../assets/Scenes/Banner/Bureau/scene.gltf'
 import { GLTFLoader } from "../../../../node_modules/three/examples/jsm/loaders/GLTFLoader.js";
-// import * as Bureau from '../../../assets/Scenes/Banner/Bureau/scene.gltf'
 export default function SceneEarthBanner() {
   useEffect(() => {
     //Canvas SetUp
